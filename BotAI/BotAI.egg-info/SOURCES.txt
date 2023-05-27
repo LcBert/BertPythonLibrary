@@ -1,0 +1,7 @@
+setup.py
+BotAI/__init__.py
+BotAI.egg-info/PKG-INFO
+BotAI.egg-info/SOURCES.txt
+BotAI.egg-info/dependency_links.txt
+BotAI.egg-info/requires.txt
+BotAI.egg-info/top_level.txt
