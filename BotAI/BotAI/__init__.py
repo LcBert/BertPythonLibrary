@@ -12,16 +12,30 @@ def get_response(messages: list):
     return response.choices[0].message
 
 
+def get_image(prompt, image_count):
+    response = openai.Image.create(
+        prompt=prompt,
+        n=image_count,
+        size="256x256"
+    )
+
+    return response['data'][0]['url']
+
+
 class BotAI:
-    def SetAPIKey(API_KEY):
+    def SetAPIKey(self, API_KEY):
         openai.api_key = API_KEY
 
-    def defineBot(description):
+    def defineBot(self, description):
         messages.append({"role": "system", "content": description})
 
-    def ask(user_input):
-        messages.append({"role": "user", "content": user_input})
+    def ask(self, prompt):
+        messages.append({"role": "user", "content": prompt})
         new_message = get_response(messages=messages)
         messages.append(new_message)
 
         return new_message["content"]
+
+    def generateImage(self, prompt, image_count):
+        image = get_image(prompt, image_count)
+        return image
