@@ -1,4 +1,5 @@
 setup.py
+FileManager/__init__.py
 FileManager.egg-info/PKG-INFO
 FileManager.egg-info/SOURCES.txt
 FileManager.egg-info/dependency_links.txt

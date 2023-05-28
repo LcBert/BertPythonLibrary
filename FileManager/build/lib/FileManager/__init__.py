@@ -7,39 +7,31 @@ import os
 """
 
 
-# class FileManager:
-def createFile(fileName):
-    try:
-        open(fileName, "x")
-    except:
-        return "File already exists"
+class FileManager:
+    def __init__(self, fileName=""):
+        self.fileName = fileName
+        open(self.fileName, "w").write("")
 
-def readFile(fileName):
-    try:
-        return (open(fileName, "r").read())
-    except:
-        return "File doesn't exists"
+    def read(self):
+        """ Read the file """
+        with open(self.fileName, "r") as file:
+            return file.read()
 
-def writeFile(fileName, text):
-    try:
-        open(fileName, "w").write(text)
-    except:
-        return "File doesn't exists"
+    def write(self, text):
+        """ Erase the previous text and write new text """
+        with open(self.fileName, "w") as file:
+            file.write(text)
 
-def appendFile(fileName, text):
-    try:
-        open(fileName, "a").write(text)
-    except:
-        return "File doesn't exists"
+    def append(self, text):
+        """ Adds text to the file """
+        with open(self.fileName, "a") as file:
+            file.write(text)
 
-def clearFile(fileName):
-    try:
-        open(fileName, "w").write("")
-    except:
-        return "File doesn't exists"
+    def clear(self):
+        """ Remove all text in the file """
+        with open(self.fileName, "w") as file:
+            file.write("")
 
-def deleteFile(fileName):
-    try:
-        os.remove(fileName)
-    except:
-        return "File doesn't exists"
+    def delete(self):
+        """ Delete the file """
+        os.remove(self.fileName)
