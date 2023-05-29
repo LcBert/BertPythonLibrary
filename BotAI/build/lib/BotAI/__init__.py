@@ -33,8 +33,10 @@ class BotAI:
         messages.append({"role": "user", "content": prompt})
         new_message = get_response(messages=messages)
         messages.append(new_message)
-
         return new_message["content"]
+
+    def clear(self):
+        messages.clear()
 
     def generateImage(self, prompt, image_count):
         image = get_image(prompt, image_count)
