@@ -3,11 +3,11 @@ import openai
 messages = []
 
 
-def get_response(messages: list):
+def get_response(model, messages: list, temperature):
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model=model,
         messages=messages,
-        temperature=1.0  # 0.0 - 2.0
+        temperature=temperature  # 0.0 - 2.0
     )
     return response.choices[0].message
 
@@ -23,15 +23,23 @@ def get_image(prompt, image_count):
 
 
 class BotAI:
-    def SetAPIKey(self, API_KEY):
+    def __init__(self, API_KEY, model="gpt-3.5-turbo", temperature=1.0):
         openai.api_key = API_KEY
+        self.model = model
+        self.temperature = temperature
 
     def defineBot(self, description):
         messages.append({"role": "system", "content": description})
 
     def ask(self, prompt):
         messages.append({"role": "user", "content": prompt})
-        new_message = get_response(messages=messages)
+
+        new_message = get_response(
+            model=self.model,
+            messages=messages,
+            temperature=self.temperature
+        )
+
         messages.append(new_message)
         return new_message["content"]
 

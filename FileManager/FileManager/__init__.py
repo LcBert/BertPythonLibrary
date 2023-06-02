@@ -10,7 +10,10 @@ import os
 class FileManager:
     def __init__(self, fileName=""):
         self.fileName = fileName
-        open(self.fileName)
+    
+    def create(self):
+        with open(self.fileName, "w") as file:
+            file.write("")
 
     def read(self):
         """ Read the file """
