@@ -29,7 +29,7 @@ class FileManager:
         """ Adds text to the file """
         with open(self.fileName, "a") as file:
             file.write(text)
-
+    
     def clear(self):
         """ Remove all text in the file """
         with open(self.fileName, "w") as file:
