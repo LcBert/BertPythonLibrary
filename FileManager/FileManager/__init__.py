@@ -12,6 +12,7 @@ class FileManager:
         self.fileName = fileName
     
     def create(self):
+        """ Create the file """
         with open(self.fileName, "w") as file:
             file.write("")
 
